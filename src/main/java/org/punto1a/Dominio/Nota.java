@@ -1,4 +1,4 @@
-package org.punto1a.Dominio.Nota;
+package org.punto1a.Dominio;
 
 public class Nota {
 

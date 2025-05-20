@@ -1,7 +1,7 @@
-package org.punto1a.Servicios.Estudiante;
+package org.punto1a.Servicios;
 
-import org.punto1a.Dominio.Curso.Curso;
-import org.punto1a.Dominio.Estudiante.Estudiante;
+import org.punto1a.Dominio.Curso;
+import org.punto1a.Dominio.Estudiante;
 
 import java.util.List;
 import java.util.Optional;

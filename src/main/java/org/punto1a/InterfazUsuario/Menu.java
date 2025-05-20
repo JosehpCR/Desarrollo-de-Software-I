@@ -1,12 +1,12 @@
 package org.punto1a.InterfazUsuario;
 
-import org.punto1a.Dominio.Curso.Curso;
-import org.punto1a.Dominio.Estudiante.Estudiante;
-import org.punto1a.Servicios.Curso.ServicioCurso;
-import org.punto1a.Servicios.Estudiante.ServicioEstudiante;
-import org.punto1a.Servicios.Nota.ServicioNota;
-import org.punto1a.Servicios.Persistencia.IServicioPersistencia;
-import org.punto1a.Servicios.Persistencia.ServicioPersistencia;
+import org.punto1a.Dominio.Curso;
+import org.punto1a.Dominio.Estudiante;
+import org.punto1a.Servicios.ServicioCurso;
+import org.punto1a.Servicios.ServicioEstudiante;
+import org.punto1a.Servicios.ServicioNota;
+import org.punto1a.Servicios.IServicioPersistencia;
+import org.punto1a.Servicios.ServicioPersistencia;
 
 import java.util.List;
 import java.util.Scanner;

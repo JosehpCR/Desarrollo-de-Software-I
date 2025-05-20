@@ -1,8 +1,8 @@
-package org.punto1a.Servicios.Persistencia;
+package org.punto1a.Servicios;
 
-import org.punto1a.Dominio.Curso.Curso;
-import org.punto1a.Dominio.Estudiante.Estudiante;
-import org.punto1a.Dominio.Nota.Nota;
+import org.punto1a.Dominio.Curso;
+import org.punto1a.Dominio.Estudiante;
+import org.punto1a.Dominio.Nota;
 
 import java.io.*;
 import java.util.ArrayList;

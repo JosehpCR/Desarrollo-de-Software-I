@@ -1,6 +1,6 @@
-package org.punto1a.Servicios.Persistencia;
+package org.punto1a.Servicios;
 
-import org.punto1a.Dominio.Curso.Curso;
+import org.punto1a.Dominio.Curso;
 
 import java.util.List;
 

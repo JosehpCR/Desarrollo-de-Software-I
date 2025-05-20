@@ -1,6 +1,4 @@
-package org.punto1a.Dominio.Estudiante;
-
-import org.punto1a.Dominio.Nota.Nota;
+package org.punto1a.Dominio;
 
 public class Estudiante {
     private String nombre;

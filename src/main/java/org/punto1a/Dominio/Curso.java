@@ -1,6 +1,4 @@
-package org.punto1a.Dominio.Curso;
-
-import org.punto1a.Dominio.Estudiante.Estudiante;
+package org.punto1a.Dominio;
 
 
 import java.util.ArrayList;
