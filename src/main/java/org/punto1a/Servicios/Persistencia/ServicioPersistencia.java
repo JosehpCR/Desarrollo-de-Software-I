@@ -4,17 +4,16 @@ import org.punto1a.Dominio.Curso.Curso;
 import org.punto1a.Dominio.Estudiante.Estudiante;
 import org.punto1a.Dominio.Nota.Nota;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ServicioPersistencia implements IServicioPersistencia {
-    private String archivo;
+    private final String archivo;
 
-    public ServicioPersistencia(String archivo) {this.archivo = archivo;}
+    public ServicioPersistencia(String archivo) {
+        this.archivo = archivo;
+    }
 
     @Override
     public void guardarCursos(List<Curso> cursos) throws Exception{
@@ -23,7 +22,7 @@ public class ServicioPersistencia implements IServicioPersistencia {
                 out.println("CURSO|" + c.getNombreCurso() + "|" + c.getTipoNota());
                 for(Estudiante e : c.getEstudiantes()){
                     String nota = (e.getNota() != null) ? e.getNota().getValor() : "";
-                    out.println("ESTUDIANTE" + e.getNombre() + "|"+nota);
+                    out.println("ESTUDIANTE|" + e.getNombre() + "|"+nota);
                 }
             }
         }
@@ -48,5 +47,22 @@ public class ServicioPersistencia implements IServicioPersistencia {
             }
         }
         return cursos;
+    }
+    public void imprimirArchivo() {
+        File file = new File(archivo);
+        if (!file.exists()) {
+            System.out.println("El archivo de datos no existe.");
+            return;
+        }
+        System.out.println("\n--- CONTENIDO DEL ARCHIVO " + archivo + " ---");
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                System.out.println(linea);
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
+        System.out.println("--- FIN DEL ARCHIVO ---\n");
     }
 }

@@ -5,11 +5,11 @@ import org.punto1a.Dominio.Curso.Curso;
 import java.util.List;
 import java.util.Optional;
 
-public class ServicioCursos {
+public class ServicioCurso {
 
     private List<Curso> cursos;
 
-    public ServicioCursos(List<Curso> cursos) {this.cursos = cursos;}
+    public ServicioCurso(List<Curso> cursos) {this.cursos = cursos;}
 
     public void crearCurso(String nombreCurso, Curso.TipoNota tipoNota) {
         this.cursos.add(new Curso(nombreCurso, tipoNota));
