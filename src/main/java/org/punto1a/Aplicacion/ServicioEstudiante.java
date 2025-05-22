@@ -1,4 +1,4 @@
-package org.punto1a.Servicios;
+package org.punto1a.Aplicacion;
 
 import org.punto1a.Dominio.Curso;
 import org.punto1a.Dominio.Estudiante;

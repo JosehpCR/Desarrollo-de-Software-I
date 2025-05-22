@@ -1,13 +1,17 @@
-package org.punto1a.InterfazUsuario;
+package org.punto1a.Presentacion;
 
-import org.punto1a.Dominio.Curso;
 import org.punto1a.Dominio.Estudiante;
-import org.punto1a.Servicios.ServicioCurso;
-import org.punto1a.Servicios.ServicioEstudiante;
-import org.punto1a.Servicios.ServicioNota;
-import org.punto1a.Servicios.IServicioPersistencia;
-import org.punto1a.Servicios.ServicioPersistencia;
+import org.punto1a.Dominio.Nota;
+import org.punto1a.Infraestructura.IServicioPersistencia;
+import org.punto1a.Aplicacion.ServicioCurso;
+import org.punto1a.Aplicacion.ServicioEstudiante;
+import org.punto1a.Aplicacion.ServicioNota;
+import org.punto1a.Dominio.Curso;
+import org.punto1a.Infraestructura.ServicioPersistencia;
 
+
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,6 +29,7 @@ public class Menu {
         this.iServicioPersistencia = iServicioPersistencia;
     }
     public void iniciar() {
+
         while (true) {
             System.out.println("\n1. Crear curso");
             System.out.println("2. Agregar estudiante a curso");
@@ -99,7 +104,7 @@ public class Menu {
         Curso curso = seleccionarCurso();
         if(curso == null)return;
         for (Estudiante e : servicioEstudiante.getEstudiantes(curso)){
-            String nota = (e.getNota() != null) ? e.getNota().getValor() : "Sin nota";
+            String nota = (e.getNota() != null) ? e.getNota().getValor().toString() : "Sin nota";
             System.out.println(e.getNombre() + ": " + nota);
         }
     }
@@ -155,6 +160,33 @@ public class Menu {
         return null;
     }
 
+    public void cargarDatosPrueba(List<Curso> cursos) {
+        File archivo = new File("cursos.txt");
+        if (!archivo.exists() || archivo.length() == 0) {
+            // Curso cuantitativo
+            Curso matematicas = new Curso("Matemáticas 1", Curso.TipoNota.CUANTITATIVA);
+            Estudiante e1 = new Estudiante("Juan Perez");
+            e1.setNota(new Nota<Double>(4.5));
+            Estudiante e2 = new Estudiante("Ana Ruiz");
+            e2.setNota(new Nota<Double>(3.7));
+            matematicas.agregarEstudiante(e1);
+            matematicas.agregarEstudiante(e2);
 
+            // Curso cualitativo
+            Curso etica = new Curso("Ética", Curso.TipoNota.CUALITATIVA);
+            Estudiante e3 = new Estudiante("Carlos Cadena");
+            e3.setNota(new Nota<String>("Aprobó"));
+            Estudiante e4 = new Estudiante("Sofía Quintero");
+            e4.setNota(new Nota<String>("Reprobó"));
+            etica.agregarEstudiante(e3);
+            etica.agregarEstudiante(e4);
+
+            //cursos.clear();
+            cursos.add(matematicas);
+            cursos.add(etica);
+            guardar();
+            System.out.println("Se han cargado valores de prueba en memoria porque el archivo estaba vacío.");
+        }
+    }
 
 }

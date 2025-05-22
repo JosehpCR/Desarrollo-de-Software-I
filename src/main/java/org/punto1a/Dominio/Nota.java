@@ -1,13 +1,17 @@
 package org.punto1a.Dominio;
 
-public class Nota {
+public class Nota<T> {
+    private T valor;
 
-    private String valor;
-    public Nota(String valor) {
+    public Nota(T valor) {
         this.valor = valor;
     }
 
-    public String getValor() {return valor;}
-    public void setValor(String valor) {}
+    public T getValor() {
+        return valor;
+    }
 
+    public void setValor(T valor) {
+        this.valor = valor;
+    }
 }

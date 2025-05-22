@@ -1,4 +1,4 @@
-package org.punto1a.Servicios;
+package org.punto1a.Infraestructura;
 
 import org.punto1a.Dominio.Curso;
 import org.punto1a.Dominio.Estudiante;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServicioPersistencia implements IServicioPersistencia {
-    private final String archivo;
+    private String archivo;
 
     public ServicioPersistencia(String archivo) {
         this.archivo = archivo;
@@ -17,12 +17,12 @@ public class ServicioPersistencia implements IServicioPersistencia {
 
     @Override
     public void guardarCursos(List<Curso> cursos) throws Exception{
-        try (PrintWriter out = new PrintWriter(new FileWriter(archivo, true))) {
+        try (PrintWriter out = new PrintWriter(new FileWriter(archivo))) {
             for (Curso c : cursos) {
-                out.println("CURSO|" + c.getNombreCurso() + "|" + c.getTipoNota());
+                out.println("CURSO| " + c.getNombreCurso() + "|" + c.getTipoNota());
                 for(Estudiante e : c.getEstudiantes()){
-                    String nota = (e.getNota() != null) ? e.getNota().getValor() : "";
-                    out.println("ESTUDIANTE|" + e.getNombre() + "|"+nota);
+                    String nota = (e.getNota() != null) ? e.getNota().getValor().toString() : "";
+                    out.println("ESTUDIANTE| " + e.getNombre() + "|"+nota);
                 }
             }
         }
